@@ -19,7 +19,7 @@ if jmeno in uzivatele and heslo == uzivatele[jmeno]:
 else:
     print("Přihlášení se nezdařilo. Zkontrolujte své údaje.")
 # a zjisteni zda se nachazi v seznamu (uzivatele)
-
+    quit()
 print()
 print("Máš na výběr jeden ze tří textů k analýze")
 
