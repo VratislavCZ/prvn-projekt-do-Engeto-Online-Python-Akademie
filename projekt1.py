@@ -6,19 +6,19 @@ discord: Vratislav M (dříve: abbadc#8421)
 """
 oddelovac  = "+--+----------+--+"
 
+# slovnik se seznamem uzivatelu a jejich hesel
 uzivatele = {"bob" : "123", "ann" : "pass123", 
     "mike" : "password123", "liz" : "pass123"}
-# slovnik se seznamem uzivatelu a jejich hesel
 
+# ziskani jmena a hesla od uzivatele
 jmeno = input("Zadejte sve jmeno: \n")
 heslo = input("Zadejte sve heslo: \n")
-# ziskani jmena a hesla od uzivatele
 
+# a zjisteni zda se nachazi v seznamu (uzivatele)
 if jmeno in uzivatele and heslo == uzivatele[jmeno]:
     print("Přihlášení úspěšné!")
 else:
     print("Přihlášení se nezdařilo. Zkontrolujte své údaje.")
-# a zjisteni zda se nachazi v seznamu (uzivatele)
     quit()
     
 print()
@@ -69,21 +69,42 @@ if vyber_textu in texts:
 else:
     print("Spatne cislo textu.")
     quit()
-# Výběr volby a výpis odpovídajícího textu
 
+# Rozdělení slov pomocí mezer
 rozdel_slova = texts[vyber_textu].split()
 pocet_slov = len(rozdel_slova)
+
+# Zjištění počtu velkých slov
 pocet_velka = len([slovo for slovo in rozdel_slova if slovo[0].isupper()])
+
 print(pocet_velka)
-# rozdelime slova pomoci mezer
-# zjistime pocet slov
-# zjistime pocet velkych slov
+# Zjištění počtu čísel jiným způsobem
+cisla = sum(znak.isdigit() for znak in ''.join(rozdel_slova[::-1]))
 
-#pocet_cisel = len([slovo for slovo in rozdel_slova if slovo.isdigit()])
+# Zjištění součtu čísel v textu
+suma_cisel = sum(int(slovo) for slovo in rozdel_slova if slovo.isdigit())
 
-cisla = 0
-for znak in rozdel_slova:
-    if znak.isdigit():
-        cisla += 1
+print(f"V textu je {pocet_slov} slov, {pocet_velka} velkých a {cisla} čísel a něco jsem zapoměl {suma_cisel}.")
 
-# zjistime pocet cisel
+# Zjištění délky slov a jejich počtu
+delka_slov = {}
+for slovo in rozdel_slova:
+    delka = len(slovo)
+    if delka in delka_slov:
+        delka_slov[delka] += 1
+    else:
+        delka_slov[delka] = 1
+
+max_delka = max(delka_slov.keys())
+
+oddelovac = "-" * 40
+
+print(oddelovac)
+print("LEN|  OCCURENCES  |NR.")
+print(oddelovac)
+
+for delka in range(1, max_delka + 1):
+    pocet = delka_slov.get(delka, 0)
+    print(f"{delka:2}|{'*' * pocet:<{max_delka}}|{pocet}")
+
+print(oddelovac)
