@@ -4,7 +4,7 @@ author: Vratislav Martin
 email: abbadc@gmail.com
 discord: Vratislav M (dříve: abbadc#8421)
 """
-
+oddelovac  = "+--+----------+--+"
 
 uzivatele = {"bob" : "123", "ann" : "pass123", 
     "mike" : "password123", "liz" : "pass123"}
@@ -20,6 +20,7 @@ else:
     print("Přihlášení se nezdařilo. Zkontrolujte své údaje.")
 # a zjisteni zda se nachazi v seznamu (uzivatele)
     quit()
+    
 print()
 print("Máš na výběr jeden ze tří textů k analýze")
 
@@ -60,7 +61,7 @@ texts = {
 }
 # predani uzivateli vyber textu 
 
-# Výběr volby a výpis odpovídajícího textu
+
 vyber_textu = input("Vyber cislo textu (1-3): ")
 if vyber_textu in texts:
     print(f"Vybral jsi text {vyber_textu}:")
@@ -69,3 +70,20 @@ else:
     print("Spatne cislo textu.")
     quit()
 # Výběr volby a výpis odpovídajícího textu
+
+rozdel_slova = texts[vyber_textu].split()
+pocet_slov = len(rozdel_slova)
+pocet_velka = len([slovo for slovo in rozdel_slova if slovo[0].isupper()])
+print(pocet_velka)
+# rozdelime slova pomoci mezer
+# zjistime pocet slov
+# zjistime pocet velkych slov
+
+#pocet_cisel = len([slovo for slovo in rozdel_slova if slovo.isdigit()])
+
+cisla = 0
+for znak in rozdel_slova:
+    if znak.isdigit():
+        cisla += 1
+
+# zjistime pocet cisel
