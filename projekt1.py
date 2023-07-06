@@ -74,17 +74,42 @@ else:
 rozdel_slova = texts[vyber_textu].split()
 pocet_slov = len(rozdel_slova)
 
-# Zjištění počtu velkých slov
-pocet_velka = len([slovo for slovo in rozdel_slova if slovo[0].isupper()])
+# Zjištění počtu slov s Velkym pismenem na zacatku
+pocet_s_velkym = {}
+for slovo in rozdel_slova:
+    if slovo[0].isupper():
+        if slovo in pocet_s_velkym:
+            pocet_s_velkym[slovo] += 1
+        else:
+            pocet_s_velkym[slovo] = 1
+    
+print(f"Pocet slov s velkym pismenem je {len(pocet_s_velkym)}.")
 
-print(pocet_velka)
+
+# Zjištění počtu slov slozenych z velkych pismen
+pocet_velka_cela = {}
+slova_slozena_z_velkych = []
+for slovo in rozdel_slova:
+    if slovo.isupper() and slovo.isalpha():
+        slova_slozena_z_velkych.append(slovo)
+        if slovo in pocet_velka_cela:
+            pocet_velka_cela[slovo] += 1
+        else:
+            pocet_velka_cela[slovo] = 1
+
+print(f"Pocet slov slozenych z velkych pismen je {len(pocet_velka_cela)}.")
+print("Slova slozena pouze z velkych pismen:")
+for slovo in slova_slozena_z_velkych:
+    print(slovo)
+
+
 # Zjištění počtu čísel jiným způsobem
 cisla = sum(znak.isdigit() for znak in ''.join(rozdel_slova[::-1]))
 
 # Zjištění součtu čísel v textu
 suma_cisel = sum(int(slovo) for slovo in rozdel_slova if slovo.isdigit())
 
-print(f"V textu je {pocet_slov} slov, {pocet_velka} velkých a {cisla} čísel a něco jsem zapoměl {suma_cisel}.")
+#print(f"V textu je {pocet_slov} slov, {pocet_velka_cela} velkých a {cisla} čísel a něco jsem zapoměl {suma_cisel}.")
 
 # Zjištění délky slov a jejich počtu
 delka_slov = {}
@@ -105,6 +130,7 @@ print(oddelovac)
 
 for delka in range(1, max_delka + 1):
     pocet = delka_slov.get(delka, 0)
-    print(f"{delka:2}|{'*' * pocet:<{max_delka}}|{pocet}")
+    print(f"{delka:2}|{'*' * pocet: <18}|{pocet}")
 
 print(oddelovac)
+
