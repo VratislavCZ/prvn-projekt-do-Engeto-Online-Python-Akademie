@@ -77,7 +77,7 @@ pocet_slov = len(rozdel_slova)
 # Zjištění počtu slov s Velkym pismenem na zacatku
 pocet_s_velkym = {}
 for slovo in rozdel_slova:
-    if slovo[0].isupper():
+    if slovo[0].isupper() and slovo.isalpha():
         if slovo in pocet_s_velkym:
             pocet_s_velkym[slovo] += 1
         else:
