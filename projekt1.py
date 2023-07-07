@@ -83,7 +83,7 @@ for slovo in rozdel_slova:
         else:
             pocet_s_velkym[slovo] = 1
     
-print(f"Pocet slov s velkym pismenem je {len(pocet_s_velkym)}.")
+print(f"Pocet slov s velkym pismenem na zacatku je {len(pocet_s_velkym)}.")
 
 
 
