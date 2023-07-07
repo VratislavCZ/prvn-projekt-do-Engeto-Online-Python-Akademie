@@ -111,5 +111,14 @@ for slovo in rozdel_slova:
 print(f"Pocet slov slozenych z malych pismen je {len(pocet_mala)}.")
 # TODO Predelat nefunguje 
 
+pocet_cisel = 0
+for cislo in rozdel_slova:
+    if cislo.isdigit():
+        pocet_cisel += 1
+print(f"Pocet cisel je {pocet_cisel}.")
 
-
+suma_cisel = 0
+for cislo in rozdel_slova:
+    if cislo.isdigit():
+        suma_cisel += int(cislo)
+print(f"Suma cisel je {suma_cisel}.")
