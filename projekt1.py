@@ -26,7 +26,7 @@ print("Máš na výběr jeden ze tří textů k analýze")
 
 texts = {
     "1": '''
-        1. Situated about 10 miles west of Kemmerer,
+        Situated about 10 miles west of Kemmerer,
         Fossil Butte is a ruggedly impressive
         topographic feature that rises sharply
         some 1000 feet above Twin Creek Valley
@@ -37,7 +37,7 @@ texts = {
     ''',
     
     "2": '''
-        2. At the base of Fossil Butte are the bright
+        At the base of Fossil Butte are the bright
         red, purple, yellow and gray beds of the Wasatch
         Formation. Eroded portions of these horizontal
         beds slope gradually upward from the valley floor
@@ -48,7 +48,7 @@ texts = {
     ''',
     
     "3": '''
-        3. The monument contains 8198 acres and protects
+        The monument contains 8198 acres and protects
         a portion of the largest deposit of freshwater fish
         fossils in the world. The richest fossil fish deposits
         are found in multiple limestone layers, which lie some
@@ -73,6 +73,7 @@ else:
 # Rozdělení slov pomocí mezer
 rozdel_slova = texts[vyber_textu].split()
 pocet_slov = len(rozdel_slova)
+print(f"Pocet slov je {pocet_slov}")
 
 # Zjištění počtu slov s Velkym pismenem na zacatku
 pocet_s_velkym = {}
@@ -85,8 +86,6 @@ for slovo in rozdel_slova:
     
 print(f"Pocet slov s velkym pismenem na zacatku je {len(pocet_s_velkym)}.")
 
-
-
 # Zjištění počtu slov slozenych z velkych pismen
 pocet_velka_cela = {}
 # slova_slozena_z_velkych = []
@@ -98,5 +97,19 @@ for slovo in rozdel_slova:
             pocet_velka_cela[slovo] = 1
 
 print(f"Pocet slov slozenych z velkych pismen je {len(pocet_velka_cela)}.")
+
+
+# zjisteni poctu slov psanych malymi pismeny
+pocet_mala = {}
+for slovo in rozdel_slova:
+    if slovo.islower() and slovo.isalpha():
+        if slovo in pocet_mala:
+            pocet_mala[slovo] += 1
+        else:
+            pocet_mala[slovo] = 1
+
+print(f"Pocet slov slozenych z malych pismen je {len(pocet_mala)}.")
+# TODO Predelat nefunguje 
+
 
 
