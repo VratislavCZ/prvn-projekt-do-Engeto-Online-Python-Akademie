@@ -4,7 +4,7 @@ author: Vratislav Martin
 email: abbadc@gmail.com
 discord: Vratislav M (dříve: abbadc#8421)
 """
-oddelovac  = "+--+----------+--+"
+oddelovac  = "----------------------------------------"
 
 # slovnik se seznamem uzivatelu a jejich hesel
 uzivatele = {"bob" : "123", "ann" : "pass123", 
@@ -22,7 +22,6 @@ else:
     quit()
     
 print()
-print("Máš na výběr jeden ze tří textů k analýze")
 
 texts = {
     "1": '''
@@ -62,18 +61,27 @@ texts = {
 # predani uzivateli vyber textu 
 
 
-vyber_textu = input("Vyber cislo textu (1-3): ")
-if vyber_textu in texts:
-    print(f"Vybral jsi text {vyber_textu}:")
-    print(texts[vyber_textu])
-else:
-    print("Spatne cislo textu.")
-    quit()
+vyber_textu = input("Enter a number btw. 1 and 3 to select: 1: ")
+
 
 # Rozdělení slov pomocí mezer
 rozdel_slova = texts[vyber_textu].split()
 pocet_slov = len(rozdel_slova)
 #print(f"Pocet slov je {pocet_slov}")
+
+# Zjištění délky a počtu jednotlivých slov
+delka_slov = {}
+for slovo in rozdel_slova:
+    delka = len(slovo)
+    if delka in delka_slov:
+        delka_slov[delka] += 1
+    else:
+        delka_slov[delka] = 1    
+
+for delka, pocet in delka_slov.items():
+    print(f"Délka: {delka}, Počet: { pocet}")
+print(delka_slov)
+    
 
 # Zjištění počtu slov s Velkym pismenem na zacatku
 pocet_s_velkym = {}
@@ -129,3 +137,12 @@ print(f"There are {len(pocet_velka_cela)} upercase words.")
 print(f"There are {len(pocet_mala)} lowercase words.")
 print(f"There are {pocet_cisel} numberic string.")
 print(f"The sum of all the numbers {suma_cisel}.")
+
+
+
+
+
+
+
+
+
