@@ -4,25 +4,29 @@ author: Vratislav Martin
 email: abbadc@gmail.com
 discord: Vratislav M (dříve: abbadc#8421)
 """
+
 oddelovac  = "----------------------------------------"
 
+print(oddelovac)
 # slovnik se seznamem uzivatelu a jejich hesel
 uzivatele = {"bob" : "123", "ann" : "pass123", 
     "mike" : "password123", "liz" : "pass123"}
 
 # ziskani jmena a hesla od uzivatele
-jmeno = input("Zadejte sve jmeno: \n")
-heslo = input("Zadejte sve heslo: \n")
+jmeno = input("username:")
+heslo = input("password:")
+print(oddelovac)
 
 # a zjisteni zda se nachazi v seznamu (uzivatele)
 if jmeno in uzivatele and heslo == uzivatele[jmeno]:
-    print("Přihlášení úspěšné!")
+    print(f"Welcome to the app, {jmeno}!")
+
 else:
     print("Přihlášení se nezdařilo. Zkontrolujte své údaje.")
     quit()
     
-print()
-
+print("We have 3 texts to be analyzed.")
+print(oddelovac)
 texts = {
     "1": '''
         Situated about 10 miles west of Kemmerer,
@@ -61,7 +65,7 @@ texts = {
 # predani uzivateli vyber textu 
 
 
-vyber_textu = input("Enter a number btw. 1 and 3 to select: 1: ")
+vyber_textu = input("Enter a number btw. 1 and 3 to select: ")
 
 
 # Rozdělení slov pomocí mezer
@@ -108,7 +112,11 @@ for slovo in rozdel_slova:
 
 
 # zjisteni poctu slov psanych malymi pismeny
+
+# Vytvořte prázdný slovník
 pocet_mala = {}
+
+# Zjištění počtu slov složených z malých písmen
 for slovo in rozdel_slova:
     if slovo.islower() and slovo.isalpha():
         if slovo in pocet_mala:
@@ -116,8 +124,12 @@ for slovo in rozdel_slova:
         else:
             pocet_mala[slovo] = 1
 
-# print(f"Pocet slov slozenych z malych pismen je {len(pocet_mala)}.")
-# TODO Predelat nefunguje 
+print(f"There are {len(pocet_mala)} lowercase words.")
+
+# Vypsání jednotlivých slov a jejich počtu výskytů
+for slovo, pocet in pocet_mala.items():
+    print(f"Word: {slovo}, Count: {pocet}")
+
 
 pocet_cisel = 0
 for cislo in rozdel_slova:
@@ -131,18 +143,17 @@ for cislo in rozdel_slova:
         suma_cisel += int(cislo)
 # print(f"Suma cisel je {suma_cisel}.")
 
+print(oddelovac)
 print(f"There are {pocet_slov} words in the selected text.")
 print(f"There are {len(pocet_s_velkym)} titlecase words.")
 print(f"There are {len(pocet_velka_cela)} upercase words.")
 print(f"There are {len(pocet_mala)} lowercase words.")
 print(f"There are {pocet_cisel} numberic string.")
 print(f"The sum of all the numbers {suma_cisel}.")
+print(oddelovac)
 
-
-
-
-
-
-
-
+# Výpis výsledku
+for length in sorted(delka_slov):
+    occurrences = delka_slov[length]
+    print(f"{length:2} | {'*' * occurrences:11} | {occurrences:2}")
 
