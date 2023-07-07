@@ -73,7 +73,7 @@ else:
 # Rozdělení slov pomocí mezer
 rozdel_slova = texts[vyber_textu].split()
 pocet_slov = len(rozdel_slova)
-print(f"Pocet slov je {pocet_slov}")
+#print(f"Pocet slov je {pocet_slov}")
 
 # Zjištění počtu slov s Velkym pismenem na zacatku
 pocet_s_velkym = {}
@@ -84,7 +84,7 @@ for slovo in rozdel_slova:
         else:
             pocet_s_velkym[slovo] = 1
     
-print(f"Pocet slov s velkym pismenem na zacatku je {len(pocet_s_velkym)}.")
+#print(f"Pocet slov s velkym pismenem na zacatku je {len(pocet_s_velkym)}.")
 
 # Zjištění počtu slov slozenych z velkych pismen
 pocet_velka_cela = {}
@@ -96,7 +96,7 @@ for slovo in rozdel_slova:
         else:
             pocet_velka_cela[slovo] = 1
 
-print(f"Pocet slov slozenych z velkych pismen je {len(pocet_velka_cela)}.")
+# print(f"Pocet slov slozenych z velkych pismen je {len(pocet_velka_cela)}.")
 
 
 # zjisteni poctu slov psanych malymi pismeny
@@ -108,17 +108,24 @@ for slovo in rozdel_slova:
         else:
             pocet_mala[slovo] = 1
 
-print(f"Pocet slov slozenych z malych pismen je {len(pocet_mala)}.")
+# print(f"Pocet slov slozenych z malych pismen je {len(pocet_mala)}.")
 # TODO Predelat nefunguje 
 
 pocet_cisel = 0
 for cislo in rozdel_slova:
     if cislo.isdigit():
         pocet_cisel += 1
-print(f"Pocet cisel je {pocet_cisel}.")
+# print(f"Pocet cisel je {pocet_cisel}.")
 
 suma_cisel = 0
 for cislo in rozdel_slova:
     if cislo.isdigit():
         suma_cisel += int(cislo)
-print(f"Suma cisel je {suma_cisel}.")
+# print(f"Suma cisel je {suma_cisel}.")
+
+print(f"There are {pocet_slov} words in the selected text.")
+print(f"There are {len(pocet_s_velkym)} titlecase words.")
+print(f"There are {len(pocet_velka_cela)} upercase words.")
+print(f"There are {len(pocet_mala)} lowercase words.")
+print(f"There are {pocet_cisel} numberic string.")
+print(f"The sum of all the numbers {suma_cisel}.")
