@@ -8,6 +8,7 @@ discord: Vratislav M (dříve: abbadc#8421)
 oddelovac  = "----------------------------------------"
 
 print(oddelovac)
+
 # slovnik se seznamem uzivatelu a jejich hesel
 uzivatele = {"bob" : "123", "ann" : "pass123", 
     "mike" : "password123", "liz" : "pass123"}
@@ -22,7 +23,7 @@ if jmeno in uzivatele and heslo == uzivatele[jmeno]:
     print(f"Welcome to the app, {jmeno}!")
 
 else:
-    print("Přihlášení se nezdařilo. Zkontrolujte své údaje.")
+    print("unregistered user, terminating the program..")
     quit()
     
 print("We have 3 texts to be analyzed.")
@@ -71,7 +72,7 @@ vyber_textu = input("Enter a number btw. 1 and 3 to select: ")
 # Rozdělení slov pomocí mezer
 rozdel_slova = texts[vyber_textu].split()
 pocet_slov = len(rozdel_slova)
-#print(f"Pocet slov je {pocet_slov}")
+
 
 # Zjištění délky a počtu jednotlivých slov
 delka_slov = {}
@@ -82,10 +83,6 @@ for slovo in rozdel_slova:
     else:
         delka_slov[delka] = 1    
 
-for delka, pocet in delka_slov.items():
-    print(f"Délka: {delka}, Počet: { pocet}")
-print(delka_slov)
-    
 
 # Zjištění počtu slov s Velkym pismenem na zacatku
 pocet_s_velkym = {}
@@ -96,7 +93,6 @@ for slovo in rozdel_slova:
         else:
             pocet_s_velkym[slovo] = 1
     
-#print(f"Pocet slov s velkym pismenem na zacatku je {len(pocet_s_velkym)}.")
 
 # Zjištění počtu slov slozenych z velkych pismen
 pocet_velka_cela = {}
@@ -108,51 +104,39 @@ for slovo in rozdel_slova:
         else:
             pocet_velka_cela[slovo] = 1
 
-# print(f"Pocet slov slozenych z velkych pismen je {len(pocet_velka_cela)}.")
 
+pocet_mala = 0
 
-# zjisteni poctu slov psanych malymi pismeny
-
-# Vytvořte prázdný slovník
-pocet_mala = {}
-
-# Zjištění počtu slov složených z malých písmen
-for slovo in rozdel_slova:
-    if slovo.islower() and slovo.isalpha():
-        if slovo in pocet_mala:
-            pocet_mala[slovo] += 1
-        else:
-            pocet_mala[slovo] = 1
-
-print(f"There are {len(pocet_mala)} lowercase words.")
-
-# Vypsání jednotlivých slov a jejich počtu výskytů
-for slovo, pocet in pocet_mala.items():
-    print(f"Word: {slovo}, Count: {pocet}")
+for i in rozdel_slova:
+    if i.islower():
+        pocet_mala += 1
+print(f"There are {pocet_mala} lowercase words.")
 
 
 pocet_cisel = 0
 for cislo in rozdel_slova:
     if cislo.isdigit():
         pocet_cisel += 1
-# print(f"Pocet cisel je {pocet_cisel}.")
+
 
 suma_cisel = 0
 for cislo in rozdel_slova:
     if cislo.isdigit():
         suma_cisel += int(cislo)
-# print(f"Suma cisel je {suma_cisel}.")
+
 
 print(oddelovac)
 print(f"There are {pocet_slov} words in the selected text.")
 print(f"There are {len(pocet_s_velkym)} titlecase words.")
 print(f"There are {len(pocet_velka_cela)} upercase words.")
-print(f"There are {len(pocet_mala)} lowercase words.")
+print(f"There are {(pocet_mala)} lowercase words.")
 print(f"There are {pocet_cisel} numberic string.")
 print(f"The sum of all the numbers {suma_cisel}.")
 print(oddelovac)
 
+
 # Výpis výsledku
+print("LEN | OCCURENCES | NR")
 for length in sorted(delka_slov):
     occurrences = delka_slov[length]
     print(f"{length:2} | {'*' * occurrences:11} | {occurrences:2}")
