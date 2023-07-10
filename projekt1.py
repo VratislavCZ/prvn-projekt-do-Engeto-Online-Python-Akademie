@@ -7,7 +7,6 @@ discord: Vratislav M (dříve: abbadc#8421)
 
 oddelovac  = "----------------------------------------"
 
-print(oddelovac)
 
 # slovnik se seznamem uzivatelu a jejich hesel
 uzivatele = {"bob" : "123", "ann" : "pass123", 
@@ -78,7 +77,6 @@ bez_dia = []
 for slovo in rozdel_slova:
     bez_dia.append(slovo.strip(".,:"))
 
-print(f"Pocet slov bez diakritiky je {len(bez_dia)}")
 
 # Zjištění délky a počtu jednotlivých slov
 delka_slov = {}
