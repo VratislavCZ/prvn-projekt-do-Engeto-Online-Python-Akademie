@@ -73,10 +73,16 @@ vyber_textu = input("Enter a number btw. 1 and 3 to select: ")
 rozdel_slova = texts[vyber_textu].split()
 pocet_slov = len(rozdel_slova)
 
+# odstraneni diakritiky
+bez_dia = []
+for slovo in rozdel_slova:
+    bez_dia.append(slovo.strip(".,:"))
+
+print(f"Pocet slov bez diakritiky je {len(bez_dia)}")
 
 # Zjištění délky a počtu jednotlivých slov
 delka_slov = {}
-for slovo in rozdel_slova:
+for slovo in bez_dia:
     delka = len(slovo)
     if delka in delka_slov:
         delka_slov[delka] += 1
@@ -86,7 +92,7 @@ for slovo in rozdel_slova:
 
 # Zjištění počtu slov s Velkym pismenem na zacatku
 pocet_s_velkym = {}
-for slovo in rozdel_slova:
+for slovo in bez_dia:
     if slovo[0].istitle():
         if slovo in pocet_s_velkym:
             pocet_s_velkym[slovo] += 1
@@ -97,7 +103,7 @@ for slovo in rozdel_slova:
 # Zjištění počtu slov slozenych z velkych pismen
 pocet_velka_cela = {}
 # slova_slozena_z_velkych = []
-for slovo in rozdel_slova:
+for slovo in bez_dia:
     if slovo.isupper() and slovo.isalpha():
         if slovo in pocet_velka_cela:
             pocet_velka_cela[slovo] += 1
@@ -107,26 +113,26 @@ for slovo in rozdel_slova:
 
 pocet_mala = 0
 
-for i in rozdel_slova:
-    if i.islower():
+for mala in bez_dia:
+    if mala.islower():
         pocet_mala += 1
-print(f"There are {pocet_mala} lowercase words.")
+
 
 
 pocet_cisel = 0
-for cislo in rozdel_slova:
+for cislo in bez_dia:
     if cislo.isdigit():
         pocet_cisel += 1
 
 
 suma_cisel = 0
-for cislo in rozdel_slova:
+for cislo in bez_dia:
     if cislo.isdigit():
         suma_cisel += int(cislo)
 
 
 print(oddelovac)
-print(f"There are {pocet_slov} words in the selected text.")
+print(f"There are {len(bez_dia)} words in the selected text.")
 print(f"There are {len(pocet_s_velkym)} titlecase words.")
 print(f"There are {len(pocet_velka_cela)} upercase words.")
 print(f"There are {(pocet_mala)} lowercase words.")
@@ -140,4 +146,8 @@ print("LEN | OCCURENCES | NR")
 for length in sorted(delka_slov):
     occurrences = delka_slov[length]
     print(f"{length:2} | {'*' * occurrences:11} | {occurrences:2}")
+
+konecna_tabulka = sorted(delka_slov.items(), key=lambda x: x[1], reverse=True)[:12]
+
+
 
