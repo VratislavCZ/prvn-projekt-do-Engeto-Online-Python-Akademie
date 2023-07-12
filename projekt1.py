@@ -82,53 +82,44 @@ for slovo in rozdel_slova:
 delka_slov = {}
 for slovo in bez_dia:
     delka = len(slovo)
-    if delka in delka_slov:
-        delka_slov[delka] += 1
-    else:
-        delka_slov[delka] = 1    
+    delka_slov[delka] = delka_slov.get(delka, 0) + 1
 
 
 # Zjištění počtu slov s Velkym pismenem na zacatku
 pocet_s_velkym = {}
 for slovo in bez_dia:
-    if slovo[0].istitle():
-        if slovo in pocet_s_velkym:
-            pocet_s_velkym[slovo] += 1
-        else:
-            pocet_s_velkym[slovo] = 1
+    if slovo.istitle():
+        pocet_s_velkym[slovo] = pocet_s_velkym.get(slovo, 0) + 1
+
     
 
 # Zjištění počtu slov slozenych z velkych pismen
 pocet_velka_cela = {}
-# slova_slozena_z_velkych = []
 for slovo in bez_dia:
     if slovo.isupper() and slovo.isalpha():
-        if slovo in pocet_velka_cela:
-            pocet_velka_cela[slovo] += 1
-        else:
-            pocet_velka_cela[slovo] = 1
+        pocet_velka_cela[slovo] = pocet_velka_cela.get(slovo, 0) + 1
 
 
+# zjisteni poctu slov slozenych z  malych pismen
 pocet_mala = 0
-
 for mala in bez_dia:
     if mala.islower():
         pocet_mala += 1
 
 
-
+# zjisteni poctu cisel
 pocet_cisel = 0
 for cislo in bez_dia:
     if cislo.isdigit():
         pocet_cisel += 1
 
-
+# zjisteni sumy cisel
 suma_cisel = 0
 for cislo in bez_dia:
     if cislo.isdigit():
         suma_cisel += int(cislo)
 
-
+# vypsani vysledku v textu
 print(oddelovac)
 print(f"There are {len(bez_dia)} words in the selected text.")
 print(f"There are {len(pocet_s_velkym)} titlecase words.")
@@ -138,14 +129,14 @@ print(f"There are {pocet_cisel} numberic string.")
 print(f"The sum of all the numbers {suma_cisel}.")
 print(oddelovac)
 
+# Najdi nejdelší délku slova
+length = max(delka_slov.values())
 
 # Výpis výsledku
 print("LEN | OCCURENCES | NR")
+print(oddelovac)
 for length in sorted(delka_slov):
     occurrences = delka_slov[length]
     print(f"{length:2} | {'*' * occurrences:11} | {occurrences:2}")
-
-konecna_tabulka = sorted(delka_slov.items(), key=lambda x: x[1], reverse=True)[:12]
-
 
 
