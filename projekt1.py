@@ -5,7 +5,7 @@ email: abbadc@gmail.com
 discord: Vratislav M (dříve: abbadc#8421)
 """
 
-oddelovac  = "----------------------------------------"
+oddelovac = "-" * 40
 
 
 # slovnik se seznamem uzivatelu a jejich hesel
@@ -130,13 +130,16 @@ print(f"The sum of all the numbers {suma_cisel}.")
 print(oddelovac)
 
 # Najdi nejdelší délku slova
-length = max(delka_slov.values())
+max_delka = max(delka_slov.values())
+print(max_delka)
 
 # Výpis výsledku
 print("LEN | OCCURENCES | NR")
 print(oddelovac)
-for length in sorted(delka_slov):
-    occurrences = delka_slov[length]
-    print(f"{length:2} | {'*' * occurrences:11} | {occurrences:2}")
+for idx, (delka, occurrences) in enumerate(sorted(delka_slov.items())):
+    print(f"{delka:2} | {'*' * occurrences:{max_delka}} | {occurrences:2}")
+
+
+
 
 
