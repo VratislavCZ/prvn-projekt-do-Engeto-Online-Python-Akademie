@@ -131,15 +131,11 @@ print(oddelovac)
 
 # Najdi nejdelší délku slova
 max_delka = max(delka_slov.values())
-print(max_delka)
+
 
 # Výpis výsledku
-print("LEN | OCCURENCES | NR")
+print(f"LEN | OCCURENCES | NR")
+
 print(oddelovac)
 for idx, (delka, occurrences) in enumerate(sorted(delka_slov.items())):
-    print(f"{delka:2} | {'*' * occurrences:{max_delka}} | {occurrences:2}")
-
-
-
-
-
+    print(f"{delka:3} | {'*' * occurrences:{max_delka}} | {occurrences:2}")
