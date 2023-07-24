@@ -70,7 +70,7 @@ vyber_textu = input("Enter a number btw. 1 and 3 to select: ")
 
 # Rozdělení slov pomocí mezer
 rozdel_slova = texts[vyber_textu].split()
-pocet_slov = len(rozdel_slova)
+# pocet_slov = len(rozdel_slova)
 
 # odstraneni diakritiky
 bez_dia = []
