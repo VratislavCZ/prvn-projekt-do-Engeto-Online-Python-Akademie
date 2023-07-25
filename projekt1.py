@@ -79,6 +79,8 @@ for slovo in rozdel_slova:
 
 
 # Zjištění délky a počtu jednotlivých slov
+# Zjištění slov s velkým písmenem na začátku
+# Zjištění slov složených z velkých písmen
 delka_slov = {}
 pocet_s_velkym = {}
 pocet_velka_cela = {}
@@ -93,26 +95,12 @@ for slovo in bez_dia:
     if slovo.isupper() and slovo.isalpha():
         pocet_velka_cela[slovo] = pocet_velka_cela.get(slovo, 0) + 1
 
-
-
 # zjisteni poctu slov slozenych z  malych pismen
-pocet_mala = 0
-for mala in bez_dia:
-    if mala.islower():
-        pocet_mala += 1
-
-
+pocet_mala = sum(1 for mala in bez_dia if mala.islower())
 # zjisteni poctu cisel
-pocet_cisel = 0
-for cislo in bez_dia:
-    if cislo.isdigit():
-        pocet_cisel += 1
-
-# zjisteni sumy cisel
-suma_cisel = 0
-for cislo in bez_dia:
-    if cislo.isdigit():
-        suma_cisel += int(cislo)
+pocet_cisel = sum(1 for cislo in bez_dia if cislo.isdigit())
+# suma je suma
+suma_cisel = sum(int(cislo) for cislo in bez_dia if cislo.isdigit())
 
 # vypsani vysledku v textu
 print(oddelovac)
@@ -129,7 +117,9 @@ max_delka = max(delka_slov.values())
 
 
 # Výpis výsledku
-print(f"LEN | OCCURENCES | NR")
+slovo = "OCCURENCES"
+print(f"LEN | {slovo:^{max_delka}} | NR")
+
 
 print(oddelovac)
 for idx, (delka, occurrences) in enumerate(sorted(delka_slov.items())):
