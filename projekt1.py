@@ -80,24 +80,19 @@ for slovo in rozdel_slova:
 
 # Zjištění délky a počtu jednotlivých slov
 delka_slov = {}
+pocet_s_velkym = {}
+pocet_velka_cela = {}
+
 for slovo in bez_dia:
     delka = len(slovo)
     delka_slov[delka] = delka_slov.get(delka, 0) + 1
 
-
-# Zjištění počtu slov s Velkym pismenem na zacatku
-pocet_s_velkym = {}
-for slovo in bez_dia:
     if slovo.istitle():
         pocet_s_velkym[slovo] = pocet_s_velkym.get(slovo, 0) + 1
 
-    
-
-# Zjištění počtu slov slozenych z velkych pismen
-pocet_velka_cela = {}
-for slovo in bez_dia:
     if slovo.isupper() and slovo.isalpha():
         pocet_velka_cela[slovo] = pocet_velka_cela.get(slovo, 0) + 1
+
 
 
 # zjisteni poctu slov slozenych z  malych pismen
