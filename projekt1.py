@@ -63,9 +63,10 @@ texts = {
     ''',
 }
 # predani uzivateli vyber textu 
-
-
 vyber_textu = input("Enter a number btw. 1 and 3 to select: ")
+while vyber_textu not in ['1', '2', '3']:
+    print("Neplatný vstup! Zadejte prosím číslo od 1 do 3.")
+    vyber_textu = input("Zadejte číslo od 1 do 3: ")
 
 
 # Rozdělení slov pomocí mezer
